@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a simple application to list end find products.
+This is a simple application to list and find products.
 
 
 ## Installation
@@ -19,3 +19,7 @@ end
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/store](https://hexdocs.pm/store).
+
+## Run Tests
+
+Type the command line `mix test` to run all test cases.
