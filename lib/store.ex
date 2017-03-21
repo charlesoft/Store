@@ -28,9 +28,6 @@ defmodule Store do
     |> abs
   end
 
-  @doc """
-  gets rows and sum all the prices
-  """
   defp sum(rows) do
     Enum.reduce(rows, fn(x,acc) -> x + acc end)
   end

@@ -18,6 +18,6 @@ defmodule StoreTest do
   end
 
   test "return eletronic product", context do
-    assert Store.find_eletronics(context[:list]) == "Kindle"
+    assert Store.find_eletronic(context[:list]) == "Kindle"
   end
 end
