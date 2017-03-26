@@ -18,14 +18,30 @@ defmodule Store do
   end
 
   def find_eletronic([]) do
-    raise "No product found"
+    "No product found"
   end
 
+  def find_most_expensive(rows) do
+    Enum.max_by(rows, &parse_price(&1))
+  end
+
+  def apply_discount(rows, disc) do
+    Enum.map(rows, &calculate_discount(&1, disc))
+  end
 
   defp parse_price(%{ "price" => price }) do
     price
     |> String.to_float
     |> abs
+  end
+
+  def calculate_discount(%{ "name" => name, "price" => price, "category" => category }, disc) do
+    %{ "name" => name, "price" => discount(price, disc), "category" => category }
+  end
+
+  defp discount(price, disc) do
+    new_price = parse_price(%{ "price" => price })
+    new_price - (new_price * (disc/100))
   end
 
   defp sum(rows) do

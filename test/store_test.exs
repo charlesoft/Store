@@ -3,7 +3,6 @@ defmodule StoreTest do
   doctest Store
 
   setup do
-    IO.puts "List created!"
 
     [list: [
              %{"name" => "Programing Elixir", "price" => "10.00", "category" => "Book"},
@@ -19,5 +18,20 @@ defmodule StoreTest do
 
   test "return eletronic product", context do
     assert Store.find_eletronic(context[:list]) == "Kindle"
+  end
+
+  test "raise 'No product found'", context do
+    list = List.delete_at(context[:list],2)
+    assert Store.find_eletronic(list) == "No product found"
+  end
+
+  test "return the most expensive", context do
+    assert Store.find_most_expensive(context[:list]) ==  %{"name" => "Kindle", "price" => "90.0", "category" => "Eletronic"}
+  end
+
+  test "apply discount", context do
+    list = Store.apply_discount(context[:list], 10)
+    first = List.first(list)
+    assert first["price"] == 9.00
   end
 end
