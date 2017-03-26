@@ -35,7 +35,7 @@ defmodule Store do
     |> abs
   end
 
-  def calculate_discount(%{ "name" => name, "price" => price, "category" => category }, disc) do
+  defp calculate_discount(%{ "name" => name, "price" => price, "category" => category }, disc) do
     %{ "name" => name, "price" => discount(price, disc), "category" => category }
   end
 

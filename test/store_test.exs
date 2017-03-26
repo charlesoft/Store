@@ -20,7 +20,7 @@ defmodule StoreTest do
     assert Store.find_eletronic(context[:list]) == "Kindle"
   end
 
-  test "raise 'No product found'", context do
+  test "returns 'No product found'", context do
     list = List.delete_at(context[:list],2)
     assert Store.find_eletronic(list) == "No product found"
   end
