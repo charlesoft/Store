@@ -37,6 +37,10 @@ defmodule Store do
     Enum.max_by(rows, &parse_price(&1))
   end
 
+  def find_the_cheaper(rows) do
+    Enum.min_by(rows, &parse_price(&1))
+  end
+
   def apply_discount(rows, disc) do
     Enum.map(rows, &calculate_discount(&1, disc))
   end

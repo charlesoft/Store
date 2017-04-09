@@ -29,6 +29,10 @@ defmodule StoreTest do
     assert Store.find_most_expensive(context[:list]) == %{"name" => "Kindle", "price" => "90.0", "category" => "Eletronic"}
   end
 
+  test "returns the cheaper", context do
+    assert Store.find_the_cheaper(context[:list]) == %{"name" => "Programing Elixir", "price" => "10.00", "category" => "Book"}
+  end
+
   test "apply discount", context do
     list = Store.apply_discount(context[:list], 10)
     first = List.first(list)
