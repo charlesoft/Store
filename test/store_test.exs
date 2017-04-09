@@ -26,12 +26,20 @@ defmodule StoreTest do
   end
 
   test "return the most expensive", context do
-    assert Store.find_most_expensive(context[:list]) ==  %{"name" => "Kindle", "price" => "90.0", "category" => "Eletronic"}
+    assert Store.find_most_expensive(context[:list]) == %{"name" => "Kindle", "price" => "90.0", "category" => "Eletronic"}
   end
 
   test "apply discount", context do
     list = Store.apply_discount(context[:list], 10)
     first = List.first(list)
     assert first["price"] == 9.00
+  end
+
+  test "finds by name correctly", context do
+    assert Store.find_by_name(context[:list], "Ruby on Rails") == %{"name" => "Ruby on Rails", "price" => "59.90", "category" => "Book"}
+  end
+
+  test "does not find element by the name that is passed", context do
+    assert Store.find_by_name(context[:list], "Python") == "No product found"
   end
 end

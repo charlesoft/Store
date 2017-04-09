@@ -21,6 +21,18 @@ defmodule Store do
     "No product found"
   end
 
+  def find_by_name([%{ "name" => name, "price" => price, "category" => category } | _], name) do
+    %{ "name" => name, "price" => price, "category" => category }
+  end
+
+  def find_by_name([_| tail], name) do
+    find_by_name(tail,name)
+  end
+
+  def find_by_name([], _) do
+    "No product found"
+  end
+
   def find_most_expensive(rows) do
     Enum.max_by(rows, &parse_price(&1))
   end
